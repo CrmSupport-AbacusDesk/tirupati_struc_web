@@ -73,9 +73,10 @@
               <th class="w80 text-center">Qty.</th>
               <!-- <th class="w60 text-center">Wallet</th> -->
               <th class="w100 text-center">Status</th>
-              <th class="w150 text-right">Transfer Points</th>
-              <th class="w150">Reason</th>
+              <th class="w100 text-right">Transfer Points</th>
+              <!-- <th class="w150">Reason</th> -->
               <th class="w100 text-right">Refunded Points</th>
+              <th class="w100 text-right">After Refunded Points</th>
               <th class="w100 text-right">Return Points</th>
             </tr>
           </table>
@@ -120,12 +121,6 @@
                   <i class="material-icons">search</i>
                 </div>
               </th>
-
-
-             
-            
-
-
               <th class="w100">&nbsp;</th>
               <th class="w80 text-center">
                 <div class="search-form">
@@ -150,13 +145,14 @@
                   </div>
                 </div>
               </th>
-              <th class="w150 text-center">
-                <div class="search-form">
+              <th class="w100 text-center">
+                <!-- <div class="search-form">
                   <input type="text" placeholder="Search..." [(ngModel)]="filter.points"  (keyup.enter)="current_page = 1; contractorList('')">
                   <i class="material-icons">search</i>
-                </div>
+                </div> -->
               </th>
-              <th class="w150"></th>
+              <!-- <th class="w150"></th> -->
+              <th class="w100 text-center">&nbsp;</th>
               <th class="w100 text-center">&nbsp;</th>
               <th class="w100 text-center">&nbsp;</th>
             </tr>
@@ -205,9 +201,11 @@
               </strong>
             </td>
             <!-- text-right -->
-            <td class="w150 text-right"><strong>{{row.points}}</strong></td>
-            <td class="w150">{{row.status_reason}}</td>
+            <td class="w100 text-right"><strong>{{row.points}}</strong></td>
+            <!-- <td class="w150">{{row.status_reason}}</td> -->
             <td class="w100 text-right"><strong class="Reject">{{row.return_points}}</strong></td>
+            <td class="w100 text-right"><strong>{{row.points - row.return_points}}</strong></td>
+
             <td class="w100 text-right"><a class="blue" style="cursor: pointer;" (click)="modalOpen(3, data, row.id, row.type, row.points, row.contractor_id)">Return</a></td>
           </tr>
         </table>
