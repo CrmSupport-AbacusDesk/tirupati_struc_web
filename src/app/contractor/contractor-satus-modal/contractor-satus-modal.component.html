@@ -224,11 +224,10 @@
           <table>
             <tr>
               <th class="w60">Sr. No.</th>
-              <th class="w120">Brand Name</th>
-              <!-- <th>Product Name </th> -->
-              <th class="w150 text-center">Thickness</th>
-              <th class="w100 text-center">Quantity</th>
-              <th class="w100 text-right">Carpenter Points</th>
+              <th>Retailer Detail</th>
+              <th>Distributor Detail</th>
+              <th class="w130">Brand Name</th>
+              <th class="w70  text-center">Quantity</th>
             </tr>
           </table>
         </div>
@@ -238,11 +237,11 @@
           <table>
             <tr  *ngFor="let row of conDetail.parts; let i = index">
               <td class="w60">{{i+1}}</td>
-              <td class="w120">{{row.product_point_group}}</td>
+              <td>{{conDetail.retailer_name | titlecase}} - {{conDetail.retailer_mobile}}</td>
+              <td>{{conDetail.distributor_company_name | titlecase}} - {{conDetail.distributor_mobile}}</td>
+              <td class="w130">{{row.product_point_group | titlecase}}</td>
               <!-- <td>{{row.item_name}}</td> -->
-              <td class="w150 text-center">{{row.thickness}}</td>
-              <td class="w100 text-center">{{row.qty}}</td>
-              <td class="w100 text-right"><strong>{{row.karigar_points}}</strong></td>
+              <td class="w70  text-center">{{row.qty}}</td>
             </tr>
           </table>
         </div>
