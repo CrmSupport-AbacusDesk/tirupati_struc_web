@@ -56,6 +56,7 @@ export class DealerDetailComponent implements OnInit {
               this.myPointList();
               this.getReferral();
               this.get_points_summry();
+              this.getAssignPlumberList();
           }
       });
   }
@@ -200,7 +201,11 @@ export class DealerDetailComponent implements OnInit {
       });
   }
   
+
+
   referral_data:any=[];
+  point_transfer:any=[]; 
+  company_point_transfer:any=[];
   
   getReferral() 
   {
@@ -212,8 +217,35 @@ export class DealerDetailComponent implements OnInit {
           this.loading_list = false;
           console.log(d);
           this.referral_data = d.referal;
+          this.point_transfer = d.point_transfer;
+          this.company_point_transfer = d.company_point_transfer;
+
       });
   }
+
+  
+
+
+  assignplumber:any={};
+  getAssignPlumberList()
+{
+    this.filter = this.filter
+  this.karigar_id = this.karigar_id;
+  this.db.post_rqst(  {  'dealer_id': this.karigar_id,'filter':this.filter }, 'offer/plumber_List')
+  .subscribe( d => {
+      this.loading_list = false;
+      console.log(d);
+      this.assignplumber = d.karigars;
+     
+  });
+}
+
+
+
+
+
+
+
 
   points_summry:any=[];
   get_points_summry() 

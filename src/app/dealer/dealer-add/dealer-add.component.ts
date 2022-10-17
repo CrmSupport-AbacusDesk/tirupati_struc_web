@@ -17,6 +17,8 @@ export class DealerAddComponent implements OnInit {
   savingData = false;
   states: any = [];
   districts: any = [];
+  distributorlist: any = [];
+
   cities: any = [];
   pincodes: any = [];
   karigar_id:any;
@@ -37,6 +39,7 @@ export class DealerAddComponent implements OnInit {
           this.AssignSaleUser();
           this.AssignDistributor();
           this.get_karigar_type();
+          this.distributorList();
           this.karigarform.country_id = 99;
       });
   }
@@ -54,6 +57,9 @@ export class DealerAddComponent implements OnInit {
           this.loading_list = false;
           console.log(d);
           this.karigarform = d.karigar;
+          if(this.karigarform.doa == '0000-00-00'){
+            this.karigarform.doa = '';
+        }
           console.log( this.karigarform);
           this.getDistrictList(1);
           this.getCityList(1);
@@ -78,6 +84,7 @@ export class DealerAddComponent implements OnInit {
           this.states = d.states;
       });
   }
+
   getDistrictList(val){
       this.loading_list = true;
       let st_name;
@@ -91,6 +98,20 @@ export class DealerAddComponent implements OnInit {
           this.districts = d.districts;  
       });
   }
+
+
+  distributorList(){   
+   
+    this.db.post_rqst({} ,'app_karigar/distributorList')
+    .subscribe(d => {  
+        
+        this.distributorlist = d['karigars'];
+    });
+}
+
+
+
+
   getCityList(val){   
       this.loading_list = true;
       let dist_name;
@@ -148,11 +169,11 @@ export class DealerAddComponent implements OnInit {
           this.loading_list = false;
           console.log( d );
           if(d['status'] == 'EXIST' ){
-              this.dialog.error( 'Email or Mobile No. exists');
+              this.dialog.error( 'Mobile No. already exists');
               return;
           }
           this.router.navigate(['dealer-list/1']);
-          this.dialog.success('Dealer has been successfully added');
+          this.dialog.success('Retailer has been successfully added');
       });
   }
   sales_users:any=[];

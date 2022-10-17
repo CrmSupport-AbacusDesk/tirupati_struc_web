@@ -18,8 +18,21 @@
     @Injectable({ providedIn: 'root' })
     export class DatabaseService implements OnInit {
 
-        myurl = 'https://devcrm.abacusdesk.com/tirupatistructural/dd_api/';
-        uploadUrl = "https://devcrm.abacusdesk.com/tirupatistructural/dd_api/app/uploads/";
+
+         //  live url
+
+        myurl = 'https://apps.abacusdesk.com/tirupatistructural/dd_api/';
+        uploadUrl = "https://apps.abacusdesk.com/tirupatistructural/dd_api/app/uploads/";
+
+
+
+
+
+
+        // testing url
+
+        // myurl = 'https://devcrm.abacusdesk.com/tirupatistructural/dd_api/';
+        // uploadUrl = "https://devcrm.abacusdesk.com/tirupatistructural/dd_api/app/uploads/";
         
    
 
