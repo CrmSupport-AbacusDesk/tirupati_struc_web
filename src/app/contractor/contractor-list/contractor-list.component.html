@@ -75,6 +75,8 @@
               <th class="w100 text-center">Status</th>
               <th class="w150 text-right">Transfer Points</th>
               <th class="w150">Reason</th>
+              <th class="w100 text-right">Refunded Points</th>
+              <th class="w100 text-right">Return Points</th>
             </tr>
           </table>
         </div>
@@ -150,12 +152,13 @@
               </th>
               <th class="w150 text-center">
                 <div class="search-form">
-                  <input type="text" placeholder="Search..." [(ngModel)]="filter.points"
-                    (keyup.enter)="current_page = 1; contractorList('')">
+                  <input type="text" placeholder="Search..." [(ngModel)]="filter.points"  (keyup.enter)="current_page = 1; contractorList('')">
                   <i class="material-icons">search</i>
                 </div>
               </th>
               <th class="w150"></th>
+              <th class="w100 text-center">&nbsp;</th>
+              <th class="w100 text-center">&nbsp;</th>
             </tr>
           </table>
         </div>
@@ -183,8 +186,7 @@
                     <img [src]="uploadUrl+row.image" (click)="openDialog(uploadUrl + row.image)">
                   </div>
                 </ng-container>
-                <a class="blue" *ngIf="row.total_items > 0" style="cursor: pointer;"
-                  (click)="modalOpen(1, data, row.id, row.type, row.points)">{{row.total_items}}</a>
+                <a class="blue"  *ngIf="row.total_items > 0" style="cursor: pointer;" (click)="modalOpen(1, data, row.id, row.type, row.points,'')">{{row.total_items}}</a>
               </div>
             </td>
             <td class="w80 text-center">{{row.total_qty}}</td>
@@ -205,6 +207,8 @@
             <!-- text-right -->
             <td class="w150 text-right"><strong>{{row.points}}</strong></td>
             <td class="w150">{{row.status_reason}}</td>
+            <td class="w100 text-right"><strong class="Reject">{{row.return_points}}</strong></td>
+            <td class="w100 text-right"><a class="blue" style="cursor: pointer;" (click)="modalOpen(3, data, row.id, row.type, row.points, row.contractor_id)">Return</a></td>
           </tr>
         </table>
       </div>
