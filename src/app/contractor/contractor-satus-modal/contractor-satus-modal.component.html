@@ -207,3 +207,83 @@
     </div>
   </form>
 </div>
+
+
+
+<div class="sprate-box "  *ngIf="dataValue == 3">
+  <div class="full-offer">
+    <div class="top-heading">
+      <h2>Item Detail</h2>
+      <div class="close-icon">
+        <button mat-button mat-dialog-close ><i class="material-icons">clear</i></button>
+      </div>
+    </div>
+  </div>
+  <div style="margin: 0px -10px;">
+    <div class="css-table" >
+      <div class="sticky-header">
+        <div class="header">
+          <table>
+            <tr>
+              <th class="w60">Sr. No.</th>
+              <th class="w120">Brand Name</th>
+              <!-- <th>Product Name </th> -->
+              <th class="w150 text-center">Thickness</th>
+              <th class="w100 text-center">Quantity</th>
+              <th class="w100 text-right">Carpenter Points</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="table-container">
+        <div class="table-body">
+          <table>
+            <tr  *ngFor="let row of conDetail.parts; let i = index">
+              <td class="w60">{{i+1}}</td>
+              <td class="w120">{{row.product_point_group}}</td>
+              <!-- <td>{{row.item_name}}</td> -->
+              <td class="w150 text-center">{{row.thickness}}</td>
+              <td class="w100 text-center">{{row.qty}}</td>
+              <td class="w100 text-right"><strong>{{row.karigar_points}}</strong></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row ml10 mr10">
+      <div class="col s12">
+        <div class="option-field">
+         <h2>Refund Point</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row ml10 mr10">
+      <div class="col s6">
+        <div class="option-field">
+          <div class="control-field">
+            <mat-form-field class="cs-input">
+              <input matInput placeholder="Transfer Point" name="transfer_point" [(ngModel)]="karigarform.transfer_point"  #transfer_point="ngModel" readonly>
+            </mat-form-field>  
+          </div>
+        </div>
+      </div>
+      <div class="col s6">
+        <div class="option-field">
+          <div class="control-field">
+            <mat-form-field class="cs-input">
+              <input matInput placeholder="Return Point" name="return_point" [(ngModel)]="karigarform.return_point" #return_point="ngModel" required>
+            </mat-form-field>  
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row ml10 mr10">
+      <div class="col s12">
+        <div class="save un-save mt20" (click)="pointSubmit()">
+          <button mat-button >SAVE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
