@@ -147,7 +147,7 @@ export class DistributorAddComponent implements OnInit {
             this.loading_list = false;
             console.log( d );
             if(d['status'] == 'EXIST' ){
-                this.dialog.error( 'Email or Mobile No. exists');
+                this.dialog.error( ' Mobile No. already exists');
                 return;
             }
             this.router.navigate(['distributor-list/1']);

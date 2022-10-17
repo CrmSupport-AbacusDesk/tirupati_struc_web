@@ -91,8 +91,8 @@
                             <th class="w100">Mobile</th>
                             <th class="w135">State</th>
                             <th class="w135">District</th>
-                            <th class="w150">Dealer</th>
-                            <th class="w150">Dealer Contact</th>
+                            <!-- <th class="w150">Dealer</th>
+                            <th class="w150">Dealer Contact</th> -->
                             <th class="w150 text-center">
                                 <div class="ml0">
                                     <button mat-button style="padding: 0px 6px !important;" (click)="sortByWallet()">
@@ -102,7 +102,7 @@
                                 </div>
                             </th>
                             <th class="w70 text-center">Requests</th>
-                            <th class="w65 text-center">User Type</th>
+                            <!-- <th class="w65 text-center">User Type</th> -->
                             <th class="w100 text-center">Status</th>
                         </tr>
                     </table>
@@ -148,13 +148,13 @@
                                     <i class="material-icons">search</i>
                                 </div>
                             </th>
-                            <th class="w150">
+                            <!-- <th class="w150">
                                 <div class="search-form">
                                     <input type="text" placeholder="Dealer" [(ngModel)]="filter.dealer"  (keyup.enter)="current_page = 1;getKarigarList('')">
                                     <i class="material-icons">search</i>
                                 </div>
-                            </th>
-                            <th class="w150"></th>
+                            </th> -->
+                            <!-- <th class="w150"></th> -->
             
                             <th class="w150">
                                 <!-- <div class="search-form">
@@ -163,7 +163,7 @@
                                 </div> -->
                             </th>
                             <th class="w70"></th>
-                            <th class="w65"></th>
+                            <!-- <th class="w65"></th> -->
                             <th class="w100">
                                 <div class="form-area">
                                     <div class="slect mr0">
@@ -216,12 +216,14 @@
                         <td class="w135">{{val.state | titlecase }}</td>
                         <td class="w135">{{val.district | titlecase }}</td>
 
-                        <td class="w150">{{val.parent_counter_name | titlecase }}</td>
-                        <td class="w150">{{val.parent_counter_contact_person | titlecase }} - {{val.parent_counter_mobile}}</td>
+                        <!-- <td class="w150">{{val.parent_counter_name | titlecase }}</td> -->
+                        <!-- <td class="w150">{{val.parent_counter_contact_person | titlecase }} - {{val.parent_counter_mobile}}</td> -->
                         <td class="w150 text-center"> {{val.total_wallet_point}}</td>
                         <td class="w70 text-center"><span class="back-bg">{{val.redeem_request}}</span></td>
-                        <td class="w65 text-center"><a class="blue" style="cursor: pointer;" (click)="changeType(1,  val.id, val.user_type)">Change</a></td>
-                        <td class="w100">
+
+                        <!-- <td class="w65 text-center"><a class="blue" style="cursor: pointer;" (click)="changeType(1,  val.id, val.user_type)">Change</a></td> -->
+
+                         <td class="w100"> 
                             <div class="center">
                                 <select class="{{val.status}}"  [name]="'status'+i" placeholder="Status" [(ngModel)]="val.status" (change)="karigarsSatus(i) ">
                                     <option class="Verified" value="Verified">Verified</option>
@@ -229,8 +231,8 @@
                                     <option class="Pending" value="Pending">Pending</option>
                                     <option class="Suspect" value="Suspect">Suspect</option>
                                 </select> 
-                                <div class="over-sec">
-                                    <i class="material-icons deactive"  (click)="deleteKarigar(val.id)" >delete_sweep</i>
+                                <div class="over-sec" >
+                                    <i class="material-icons deactive" style="background: #ec3237 !important;"  (click)="deleteKarigar(val.id)" >delete_sweep</i>
                                 </div> 
                             </div>
                         </td>

@@ -27,10 +27,10 @@ export class DistributorListComponent implements OnInit {
   filtering : any = false;
   select_all:any=false;
   
-  distributor_pending : any = 0;
+  distributor_deactive : any = 0;
   distributor_reject : any = 0;
   distributor_suspect : any = 0;
-  distributor_verified : any = 0;
+  distributor_active : any = 0;
   
   constructor(public db: DatabaseService, public dialog: DialogComponent,public route:ActivatedRoute,public alrt:MatDialog) {
       this.route.params.subscribe(resp=>{
@@ -80,6 +80,22 @@ export class DistributorListComponent implements OnInit {
       this.getDistributorList('');
   }
   
+
+  productForm: any = {};
+  addImageIcon=true;
+  products:any = [];
+
+  isEditCalled = false;
+    editProduct(id,index){
+        this.isEditCalled = true;
+        this.addImageIcon=true;
+        this.productForm = this.products.filter( x => x.id==id)[0];
+        this.productForm.profile_selected = parseInt(this.productForm.profile);
+        console.log(this.productForm);
+        this.productForm.profile_selected = 0;
+        
+    }
+
   total_wallet_point:any = 0;
   getDistributorList(action:any) 
     {
@@ -109,10 +125,11 @@ export class DistributorListComponent implements OnInit {
             this.total_distributors =d.karigars.total;
             this.distributors = d.karigars.data;            
             this.distributor_all = d.karigar_all;
-            this.distributor_pending = d.karigar_pending;
             this.distributor_reject = d.karigar_reject;
             this.distributor_suspect = d.karigar_suspect;
-            this.distributor_verified = d.karigar_verified;            
+            this.distributor_active = d.karigar_active;  
+            this.distributor_deactive = d.karigar_deactive;
+
             for(var i=0; i<this.distributors.length; i++)
             {
                 if(this.select_all)

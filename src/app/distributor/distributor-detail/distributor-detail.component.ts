@@ -45,7 +45,7 @@ export class DistributorDetailComponent implements OnInit {
           if (this.karigar_id) {
               this.getKarigarDetails();
               this.getReedamList();
-              this.getScannedList();
+            //   this.getScannedList();
               this.getReferral();
               this.get_points_summry();
           }
@@ -60,6 +60,8 @@ export class DistributorDetailComponent implements OnInit {
       this.router.navigate(['/distributor-add/' +this.karigar_id]);
   }
   getData:any = {};
+  retailerData:any = {};
+
   total_wallet_points:any = 0;
   getKarigarDetails() {
       this.loading_list = true;
@@ -68,6 +70,7 @@ export class DistributorDetailComponent implements OnInit {
           this.loading_list = false;
           console.log(d);
           this.getData = d.karigar;
+          this.retailerData = d.retailer;
           this.getData.coupon_limit = d.karigar.manual_coupon_limit;
           this.total_wallet_points = parseInt(this.getData.balance_point) + parseInt(this.getData.referal_point_balance);
       });

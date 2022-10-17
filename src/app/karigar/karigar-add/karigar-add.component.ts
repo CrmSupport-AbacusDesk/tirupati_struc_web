@@ -54,6 +54,9 @@ export class KarigarAddComponent implements OnInit {
             this.loading_list = false;
             console.log(d);
             this.karigarform = d.karigar;
+            if(this.karigarform.doa == '0000-00-00'){
+                this.karigarform.doa = '';
+            }
             console.log( this.karigarform);
             this.getDistrictList(1);
             this.getCityList(1);
@@ -146,11 +149,11 @@ export class KarigarAddComponent implements OnInit {
             this.loading_list = false;
             console.log( d );
             if(d['status'] == 'EXIST' ){
-                this.dialog.error( 'Email or Mobile No. exists');
+                this.dialog.error( ' Mobile No. already exists');
                 return;
             }
             this.router.navigate(['karigar-list/1']);
-            this.dialog.success('Karigar has been successfully added');
+            this.dialog.success('Plumber has been successfully added');
         });
     }
     sales_users:any=[];

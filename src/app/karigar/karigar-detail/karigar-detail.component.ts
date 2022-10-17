@@ -31,6 +31,7 @@ export class KarigarDetailComponent implements OnInit {
     previousUrl:any='';
     uploadUrl:any =''
     mindate :any = new Date();  
+    retailer_count: any={};
     constructor(public db: DatabaseService, private route: ActivatedRoute, private router: Router, public ses: SessionStorage,public dialog: DialogComponent, public alrt:MatDialog ) {
         this.uploadUrl = db.uploadUrl;
     }
@@ -47,6 +48,7 @@ export class KarigarDetailComponent implements OnInit {
                 this.getScannedList();
                 this.getReferral();
                 this.get_points_summry();
+                this. getAssignPlumber();
             }
         });
     }
@@ -161,7 +163,8 @@ export class KarigarDetailComponent implements OnInit {
     }
     
     referral_data:any=[];
-    
+    point_transfer:any=[];
+
     getReferral() 
     {
         this.loading_list = true;
@@ -172,9 +175,26 @@ export class KarigarDetailComponent implements OnInit {
             this.loading_list = false;
             console.log(d);
             this.referral_data = d.referal;
+            this.point_transfer = d.point_transfer;
         });
     }
-    
+
+    assignplumber:any={};
+    getAssignPlumber()
+{
+    this.karigar_id = this.karigar_id;
+    this.db.post_rqst(  {  'plumber_id': this.karigar_id }, 'app_karigar/retailer_assign_plumber')
+    .subscribe( d => {
+        this.loading_list = false;
+        console.log(d);
+        this.assignplumber = d.retailer_id;
+        this.retailer_count = d.retailer_count;
+    });
+}
+
+
+
+
     points_summry:any=[];
     get_points_summry() 
     {

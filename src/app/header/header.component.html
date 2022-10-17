@@ -22,11 +22,12 @@
                     </a></li>
                     <li><a routerLink="/karigar-list/1" routerLinkActive="active" (click)="refershCount()">Plumber</a></li>
                     <li><a routerLink="/dealer-list/1" routerLinkActive="active" (click)="refershCount()">Retailer</a></li>
+                    <li><a routerLink="/distributor-list/1" routerLinkActive="active">Distributor</a></li>
                     <li><a routerLink="/contractor-list" routerLinkActive="active" (click)="refershCount()">Retailer Code 
                         <span *ngIf="pending_redeem_request_retailer > 0 ">{{pending_redeem_request_retailer}} </span>
                     </a></li>
-                    <!-- <li><a routerLink="/distributor-list/1" routerLinkActive="active">Distributor</a></li> -->
-                    <li><a routerLink="/coupon-code-list" routerLinkActive="active" (click)="refershCount()">Coupon Codes</a></li>
+                   
+                    <!-- <li><a routerLink="/coupon-code-list" routerLinkActive="active" (click)="refershCount()">Coupon Codes</a></li> -->
                     <li>
                         <a routerLink="/feedback-list" routerLinkActive="active" (click)="refershCount()">Feedback
                            <span *ngIf="unreadFeedCount > 0 ">{{unreadFeedCount}} </span>

@@ -45,12 +45,14 @@
                         </div>
                     </div>
                 </li>
-                <li matRipple style="background: #f50057;" (click)="goto_balance_coupon_page()">
-                    <!-- <div class="counter-value">
+
+
+                <!-- <li matRipple style="background: #f50057;" (click)="goto_balance_coupon_page()">
+                    <div class="counter-value">
                         <div class="counter-icon"><img src="assets/img/dashboard/marketing_exp.svg"></div>
                         <p>{{balance_coupon_value}}</p>
                     </div>
-                    <div class="counter-name">Balance Coupon Value</div> -->
+                    <div class="counter-name">Balance Coupon Value</div> 
                     
                     <div class="top-item">
                         <h2>Total Coupon</h2>
@@ -66,9 +68,11 @@
                             <p>Retailer</p>
                         </div>
                     </div>
-                </li>
+                </li> -->
+
+
                 
-                <li matRipple style="background: #dbb408;" (click)="goto_balance_coupon_page()">
+                <!-- <li matRipple style="background: #dbb408;" (click)="goto_balance_coupon_page()">
                     <div class="top-item">
                         <h2>Coupon Value</h2>
                         <span class="flat">{{total_coupon_amount}}</span>
@@ -83,7 +87,9 @@
                             <p>Balance</p>
                         </div>
                     </div>
-                </li>
+                </li> -->
+
+
                 <li matRipple style="background: #00b1ff;">
                     <!-- <div class="counter-value">
                         <div class="counter-icon"><img src="assets/img/dashboard/karigars.svg"></div>
@@ -102,6 +108,10 @@
                         <div class="cs-item" (click)="goto_karigarsPage('Retailer')">
                             <span>{{user_Retailer}}</span>
                             <p>Retailer</p>
+                        </div>
+                        <div class="cs-item" (click)="goto_karigarsPage('Distributor')">
+                            <span>{{user_Distributor}}</span>
+                            <p>Distributor</p>
                         </div>
                         <!-- <div class="cs-item">
                             <span>{{user_Distributor}}</span>
@@ -195,7 +205,7 @@
 </div>
 
 <div class="row mb15">
-    <div class="col s4">
+    <div class="col s6">
         <div class="pie-chart">
             <div class="chart-header">
                 <p>Offer Balance Day's</p>
@@ -231,7 +241,7 @@
         </div>
     </div>
     
-    <div class="col s4  ">
+    <div class="col s6">
         <div class="pie-chart">
             <div class="chart-header">
                 <p>Super 30 </p>
@@ -274,7 +284,7 @@
                                     <tr *ngFor="let data of super_dealers">
                                         <td>{{data.first_name | titlecase}}</td>
                                         <td class="w200">{{data.state}}</td>
-                                        <td class="w90 point">{{data.balance_point}}</td>
+                                        <td class="w90 point">{{data.total_wallet_point}}</td>
                                         <td class="w90 eligible">{{data.gift_eligible}}</td>
                                     </tr>
                                     
@@ -287,7 +297,8 @@
         </div>
     </div>
     
-    
+                    <!-- <a class="" mat-button>Distributor</a> -->
+<!--     
     <div class="col s4">
         <div class="pie-chart">
             <div class="chart-header">
@@ -295,7 +306,6 @@
                 <div class="sm-tab">
                     <a class="" [ngClass]="{'active': show_karigar_graph == true}" (click)="showKarigarGraph()" mat-button>Plumber</a>
                     <a class="" [ngClass]="{'active': show_dealer_graph == true}" (click)="showDealerGraph()" mat-button>Retailer</a>
-                    <!-- <a class="" mat-button>Distributor</a> -->
                 </div>
             </div>
             <div class="chart" *ngIf="show_karigar_graph">
@@ -315,11 +325,11 @@
         </fusioncharts>
     </div>
 </div>
-</div>
+</div> -->
 </div>
 
 <div class="row mb15">
-    <div class="col s4  ">
+    <div class="col s6  ">
         <div class="pie-chart">
             <div class="chart-header">
                 <p>{{karigar_anni_graph == true ? 'Plumber' :'Retailer'}} Anniversary Upcoming 7 Day's</p>
@@ -376,7 +386,7 @@
         </div>
     </div>
     
-    <div class="col s4">
+    <div class="col s6">
         <div class="pie-chart">
             <div class="chart-header">
                 <p> {{karigar_birth_graph == true ?  'Plumber' :'Retailer'}} Birthday Upcoming 7 Day's</p>
