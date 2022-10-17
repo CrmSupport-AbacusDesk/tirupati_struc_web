@@ -22,12 +22,14 @@ export class ContractorSatusModalComponent implements OnInit {
 
   
   
+  
   constructor( @Inject(MAT_DIALOG_DATA) public data, public db: DatabaseService, public dialog: DialogComponent, public dialogRef: MatDialog) { 
     console.log(data);
     this.dataValue = data['target'];
     this.contractor_id = data['contractor_id'];
     this.id = data['id'];
     this.couponTransfer.coupon_points =  data.point
+
     if(data.type =='image'){
       this.getProduct();
     }
@@ -105,8 +107,15 @@ export class ContractorSatusModalComponent implements OnInit {
     }
     changeStatus(form:any)
     {
+
+     
+      if(this.couponTransfer.status_type == 'Approved' && this.couponTransfer.coupon_points == 0 ){
+        this.dialog.warning('Transfer Point Required');
+        return
+      }
       
       if(this.couponTransfer.status_type == 'Approved' && this.data.type =='image'){
+        
         if(this.contractorData.length < 1){
           this.dialog.warning('Add at least one item');
           return

@@ -14,7 +14,7 @@
           <table>
             <tr>
               <th class="w60">Sr. No.</th>
-              <th class="w120">Brand Name</th>
+              <!-- <th class="w120">Brand Name</th> -->
               <th>Product Details</th>
               <th class="w100 text-center">Quantity</th>
               <th class="w100 text-right">Total Points</th>
@@ -29,8 +29,8 @@
           <table>
             <tr  *ngFor="let row of conDetail.parts; let i = index">
               <td class="w60">{{i+1}}</td>
-              <td class="w120">{{row.product_point_group}}</td>
-              <td>{{row.product_detail}}</td>
+              <!-- <td class="w120">{{row.product_point_group}}</td> -->
+              <td>{{row.product_point_group}}</td>
               <td class="w100 text-center">{{row.qty}}</td>
               <td class="w100 text-right"><strong>{{row.total_point}}</strong></td>
             </tr>
@@ -68,12 +68,12 @@
           </div>
         </div>
       </div>
-      
-      <div class="col s6" *ngIf="data.type !='image'">
+      <!-- *ngIf="data.type !='image'" -->
+      <div class="col s6" >
         <div class="option-field" *ngIf="couponTransfer.status_type == 'Approved' ">
           <div class="control-field">
             <mat-form-field class="cs-input">
-              <input matInput placeholder="Transfer Points" name="coupon_points" [(ngModel)] = "couponTransfer.coupon_points" #coupon_points="ngModel" (keypress)="numeric_Number($event)" readonly required>
+              <input matInput placeholder="Transfer Points" name="coupon_points" [(ngModel)] = "couponTransfer.coupon_points" #coupon_points="ngModel" required>
             </mat-form-field>  
           </div>
         </div>
@@ -184,9 +184,7 @@
                         (click)="deleteItem(raw.id)"><i class="material-icons">delete_sweep</i></a>
                       </div>
                     </td>
-                    <!-- <td class="w100">
-                      
-                    </td> -->
+                  
                   </tr>
                 </table>
               </div>

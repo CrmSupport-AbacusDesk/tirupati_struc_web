@@ -40,19 +40,19 @@
             <tr>
               <th class="w50"></th>
               <th class="w100">Date Created</th>
-              <th>Brand Name</th>
-              <th class="w100 text-center" (click)="sortByPoints()">
+              <th>Product Name</th>
+              <!-- <th class="w100 text-center" (click)="sortByPoints()">
                 <div class="view">
                   <i class="material-icons">swap_vert</i>
                   Plumber Points
                 </div>
-              </th>
-              <th class="w90 text-center" (click)="sortByPoints()">
+              </th> -->
+              <!-- <th class="w90 text-center" (click)="sortByPoints()">
                 <div class="view">
                   <i class="material-icons">swap_vert</i>
                    Retailer Points
                   </div> 
-                </th>
+                </th> -->
 
 
               <!-- <th class="w100 text-center">Painter Points</th>
@@ -73,10 +73,10 @@
                   <i class="material-icons">search</i>
                 </div>
               </th>
-              <th class="w100 text-center">&nbsp;</th>
+              <!-- <th class="w100 text-center">&nbsp;</th> -->
               <!-- <th class="w100 text-center">&nbsp;</th>
               <th class="w150">&nbsp;</th> -->
-              <th class="w90">&nbsp;</th>
+              <!-- <th class="w90">&nbsp;</th> -->
 
               <th class="w70">&nbsp;</th>
             </tr>
@@ -100,8 +100,8 @@
                 </ng-container>
               </td>
               <td>{{val.product_point_group}}</td>
-              <td class="w100 text-center">{{val.karigar_point}}</td>
-              <td class="w90">{{val.retailer_point}}</td>
+              <!-- <td class="w100 text-center">{{val.karigar_point}}</td>
+              <td class="w90">{{val.retailer_point}}</td> -->
 
               <!-- <td class="w100 text-center">{{val.painter_point}}</td>
               <td class="w150">{{val.last_updated_by}} - {{val.last_updated | date: 'dd MMM yyyy'}}</td> -->
@@ -139,18 +139,18 @@
             <div class="option-field">
               <div class="control-field">
                 <mat-form-field class="cs-input">
-                  <input matInput placeholder="Group Name" name="product_point_group"  [(ngModel)]="productForm.product_point_group" #product_point_group="ngModel" required >
+                  <input matInput placeholder="Product Name" name="product_point_group"  [(ngModel)]="productForm.product_point_group" #product_point_group="ngModel" required >
                 </mat-form-field>  
               </div>
             </div>
             
-            <div class="option-field">
+            <!-- <div class="option-field">
               <div class="control-field">
                 <mat-form-field class="cs-input">
                   <input matInput placeholder="Plumber Point" name="karigar_point"  [(ngModel)]="productForm.karigar_point" #karigar_point="ngModel" required>
                 </mat-form-field>  
               </div>
-            </div>
+            </div> -->
             <!-- <div  class="mt10">
               <mat-checkbox labelPosition="before" (change)="copyDealerPoint($event)"
               [(ngModel)]="productForm.copydealer_point" name="copydealer_point" #copydealer_point="ngModel" style="font-size: 14px;">
@@ -164,13 +164,13 @@
               </mat-form-field>  
             </div>
           </div> -->
-          <div class="option-field">
+          <!-- <div class="option-field">
             <div class="control-field">
               <mat-form-field class="cs-input">
                 <input matInput placeholder="Retailer Point" name="retailer_point"  [(ngModel)]="productForm.retailer_point" #retailer_point="ngModel" required>
               </mat-form-field>  
             </div>
-          </div>   
+          </div>    -->
         </div>
       </div>
       
