@@ -99,7 +99,7 @@ export class ContractorListComponent implements OnInit {
       this.current_page = 1;
     }
     
-    this.db.post_rqst( {'filter': this.filter}, 'app_karigar/get_contractor_request?page=' + this.current_page).subscribe( r =>
+    this.db.post_rqst( {'filter': this.filter}, 'app_karigar/get_contractor_request?page=' + 1).subscribe( r =>
       {
         this.loading_list = false;
         this.filter.mode = 1;
@@ -120,7 +120,7 @@ export class ContractorListComponent implements OnInit {
     }
     
     
-    modalOpen(target,data, id, type, point) {
+    modalOpen(target,data, id, type, point, contractor_id) {
       console.log(data);
       console.log(id);
       
@@ -132,7 +132,8 @@ export class ContractorListComponent implements OnInit {
             data,
             id, 
             type,
-            point
+            point,
+            contractor_id
           }
         });
         dialogRef.afterClosed().subscribe(result => {

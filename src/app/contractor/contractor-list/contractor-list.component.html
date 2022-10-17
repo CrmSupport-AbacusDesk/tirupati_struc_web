@@ -68,6 +68,8 @@
               <th class="w100 text-center">Status</th>
               <th class="w150 text-right">Transfer Points</th>
               <th class="w150">Reason</th>
+              <th class="w100 text-right">Refunded Points</th>
+              <th class="w100 text-right">Return Points</th>
             </tr>
           </table>
         </div>
@@ -116,24 +118,26 @@
               <th class="w100">
                 <div class="form-area">
                   <div class="slect mr0">
-                      <mat-form-field>
-                          <mat-label>All</mat-label>
-                          <mat-select  [(ngModel)]="filter.status" name="status" #status="ngModel" (selectionChange)="contractorList('')">
-                            <mat-option value="Approved" >Approved</mat-option>
-                            <mat-option value="Pending">Pending</mat-option>
-                            <mat-option  value="Reject">Reject</mat-option>
-                          </mat-select>
-                      </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>All</mat-label>
+                      <mat-select  [(ngModel)]="filter.status" name="status" #status="ngModel" (selectionChange)="contractorList('')">
+                        <mat-option value="Approved" >Approved</mat-option>
+                        <mat-option value="Pending">Pending</mat-option>
+                        <mat-option  value="Reject">Reject</mat-option>
+                      </mat-select>
+                    </mat-form-field>
                   </div>
-              </div>
+                </div>
               </th>
               <th class="w150 text-center">
-               <div class="search-form">
+                <div class="search-form">
                   <input type="text" placeholder="Search..." [(ngModel)]="filter.points"  (keyup.enter)="current_page = 1; contractorList('')">
                   <i class="material-icons">search</i>
                 </div>
               </th>
               <th class="w150"></th>
+              <th class="w100 text-center">&nbsp;</th>
+              <th class="w100 text-center">&nbsp;</th>
             </tr>
           </table>
         </div>
@@ -159,13 +163,13 @@
                     <img [src]="uploadUrl+row.image" (click)="openDialog(uploadUrl + row.image)">
                   </div>
                 </ng-container>
-                <a class="blue"  *ngIf="row.total_items > 0" style="cursor: pointer;" (click)="modalOpen(1, data, row.id, row.type, row.points)">{{row.total_items}}</a>
+                <a class="blue"  *ngIf="row.total_items > 0" style="cursor: pointer;" (click)="modalOpen(1, data, row.id, row.type, row.points,'')">{{row.total_items}}</a>
               </div>
             </td>
             <td class="w80 text-center">{{row.total_qty}}</td>
             <td class="w100 text-center">
               <div class="center" *ngIf="row.status != 'Approved'">
-                <select class="{{row.status}}"  [name]="'status'+i" placeholder="Status" [(ngModel)]="row.status" (click)="modalOpen(2, data, row.id, row.type, row.points)">
+                <select class="{{row.status}}"  [name]="'status'+i" placeholder="Status" [(ngModel)]="row.status" (click)="modalOpen(2, data, row.id, row.type, row.points,'')">
                   <option class="Verified" value="Approved" >Approved</option>
                   <option class="Pending" value="Pending">Pending</option>
                   <option class="Reject" value="Reject">Reject</option>
@@ -179,6 +183,8 @@
             <!-- text-right -->
             <td class="w150 "><strong>{{row.points}}</strong></td>
             <td class="w150">{{row.status_reason}}</td>
+            <td class="w100 text-right"><strong class="Reject">{{row.return_points}}</strong></td>
+            <td class="w100 text-right"><a class="blue" style="cursor: pointer;" (click)="modalOpen(3, data, row.id, row.type, row.points, row.contractor_id)">Return</a></td>
           </tr>
         </table>
       </div>
