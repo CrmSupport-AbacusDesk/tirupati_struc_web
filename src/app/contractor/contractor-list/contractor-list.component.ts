@@ -146,7 +146,10 @@ export class ContractorListComponent implements OnInit {
         const dialogRef = this.alrt.open(ProductImageModuleComponent,
           {
             data: {
+            
               'img' : img,
+             
+
             }
           });
           dialogRef.afterClosed().subscribe(result => {
@@ -155,6 +158,18 @@ export class ContractorListComponent implements OnInit {
         }
         
         
+      // openDialog(id, string) {
+      //   const dialogRef = this.alrt.open(ProductImageModuleComponent, {
+      //     data: {
+      //       id: id,
+      //       mode: string,
+      //     },
+      //   });
+      //   dialogRef.afterClosed().subscribe((result) => {
+      //     console.log(`Dialog result: ${result}`);
+      //   });
+      // }
+
         exportExcel()
         {
           this.filter.mode = 1;

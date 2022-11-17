@@ -66,7 +66,7 @@
             <tr>
               <th class="w50">&nbsp;</th>
               <th class="w150">Date</th>
-              <th class="w200">Retailer Name </th>
+              <th class="w200">Company Name </th>
               <th class="w150">Retailer Mobile No.</th>
               <th class="w200">Distributor Detail</th>
               <th class="w100 text-center">Total Item</th>
@@ -180,6 +180,8 @@
                 <ng-container *ngIf="row.image != ''">
                   <div class="">
                     <img [src]="uploadUrl+row.image" (click)="openDialog(uploadUrl + row.image)">
+                   
+                  
                   </div>
                 </ng-container>
                 <a class="blue"  *ngIf="row.total_items > 0" style="cursor: pointer;" (click)="modalOpen(1, data, row.id, row.type, row.points,'')">{{row.total_items}}</a>
