@@ -99,7 +99,8 @@ export class ContractorListComponent implements OnInit {
       this.current_page = 1;
     }
     
-    this.db.post_rqst( {'filter': this.filter}, 'app_karigar/get_contractor_request?page=' + 1).subscribe( r =>
+    // this.db.post_rqst( {'filter': this.filter}, 'app_karigar/get_contractor_request?page=' + 1).subscribe( r =>
+      this.db.post_rqst(  {  'filter': this.filter , 'login':this.db.datauser}, 'app_karigar/get_contractor_request?page=' + this.current_page ).subscribe( r =>
       {
         this.loading_list = false;
         this.filter.mode = 1;
