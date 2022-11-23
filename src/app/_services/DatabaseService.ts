@@ -21,8 +21,8 @@
 
          //  live url
 
-        myurl = 'https://apps.abacusdesk.com/tirupatistructural/dd_api/';
-        uploadUrl = "https://apps.abacusdesk.com/tirupatistructural/dd_api/app/uploads/";
+        // myurl = 'https://apps.abacusdesk.com/tirupatistructural/dd_api/';
+        // uploadUrl = "https://apps.abacusdesk.com/tirupatistructural/dd_api/app/uploads/";
 
 
 
@@ -31,8 +31,8 @@
 
         // testing url
 
-        // myurl = 'https://devcrm.abacusdesk.com/tirupatistructural/dd_api/';
-        // uploadUrl = "https://devcrm.abacusdesk.com/tirupatistructural/dd_api/app/uploads/";
+        myurl = 'https://devcrm.abacusdesk.com/tirupatistructural/dd_api/';
+        uploadUrl = "https://devcrm.abacusdesk.com/tirupatistructural/dd_api/app/uploads/";
         
    
 

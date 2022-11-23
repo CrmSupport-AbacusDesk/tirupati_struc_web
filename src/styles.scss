@@ -8614,3 +8614,31 @@ mat-icon
 {
     .h#{$i} {height: 1% * $i }
 }
+
+
+// .sv_pnts {
+//     display: flex;
+//     margin-top: -62px;
+ 
+// }
+// .sv_pnts button.mat-button {
+//     margin-left: 12px;
+// }
+
+
+.pls_btn {
+    width: 25px !important;
+    height: 25px !important;
+}
+
+.pl_ic {
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: -34px;
+    color: #ffffff;
+}
+
+.ic_prt {
+    display: flex;
+    justify-content: space-evenly;
+}

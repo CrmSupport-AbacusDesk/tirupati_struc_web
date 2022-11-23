@@ -122,6 +122,8 @@ export class ContractorListComponent implements OnInit {
     
     
     modalOpen(target,data, id, type, point, contractor_id) {
+      console.log(target);
+      console.log(type);
       console.log(data);
       console.log(id);
       
