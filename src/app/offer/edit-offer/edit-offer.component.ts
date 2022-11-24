@@ -41,8 +41,8 @@ export class EditOfferComponent implements OnInit {
                 this.loading_list = false;
                 console.log(d);
                 this.addOffer = d.offer;
-                this.addOffer.imgId = d.offer;
-
+                // this.addOffer.imgId = d.offer;
+                // console.log(this.addOffer.imgId);
             });
         }
         

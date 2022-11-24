@@ -224,7 +224,7 @@
           <table>
             <tr>
               <th class="w60">Sr. No.</th>
-              <th>Retailer Detail</th>
+              <th>Company Name</th>
               <th>Distributor Detail</th>
               <th class="w130">Brand Name</th>
               <th class="w70  text-center">Quantity</th>
@@ -237,7 +237,7 @@
           <table>
             <tr  *ngFor="let row of conDetail.parts; let i = index">
               <td class="w60">{{i+1}}</td>
-              <td>{{conDetail.retailer_name | titlecase}} - {{conDetail.retailer_mobile}}</td>
+              <td>{{conDetail.retailer_company_name | titlecase}}</td>
               <td>{{conDetail.distributor_company_name | titlecase}} - {{conDetail.distributor_mobile}}</td>
               <td class="w130">{{row.product_point_group | titlecase}}</td>
               <!-- <td>{{row.item_name}}</td> -->
@@ -251,7 +251,129 @@
     <div class="row ml10 mr10">
       <div class="col s12">
         <div class="option-field">
-         <h2>Refund Point</h2>
+         <h2>Add Point</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row ml10 mr10">
+      <div class="col s6">
+        <div class="option-field">
+          <div class="control-field">
+            <mat-form-field class="cs-input">
+              <input matInput placeholder="Transfer Point" name="transfer_point" [(ngModel)]="karigarform.transfer_point"  #transfer_point="ngModel" readonly>
+            </mat-form-field>  
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col s6">
+        <div class="option-field">
+          <div class="control-field">
+            <mat-form-field class="cs-input">
+              <input matInput placeholder="Return Point" name="return_point" [(ngModel)]="karigarform.return_point" #return_point="ngModel" required>
+            </mat-form-field>  
+          </div>
+        </div>
+      </div> -->
+
+      <div class="col s6">
+        <div class="option-field">
+          <div class="control-field">
+            <mat-form-field class="cs-input">
+              <input matInput placeholder="Add Point" name="add_point" [(ngModel)]="karigarform.add_point" #return_point="ngModel" >
+            </mat-form-field>  
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <!-- <div class="row ml10 mr10">
+      <div class="col s12">
+        <div class="save un-save mt20" (click)="pointSubmit()">
+          <button mat-button >Update</button>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="row ">
+      <div class="col s12  sv_pnts">
+        <div class="save un-save mt20" (click)="pointSubmit1()">
+          <button mat-button >Update</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sprate-box "  *ngIf="dataValue == 4">
+  <div class="full-offer">
+    <div class="top-heading">
+      <h2>Item Detail</h2>
+      <div class="close-icon">
+        <button mat-button mat-dialog-close ><i class="material-icons">clear</i></button>
+      </div>
+    </div>
+  </div>
+  <div style="margin: 0px -10px;">
+    <div class="css-table" >
+      <div class="sticky-header">
+        <div class="header">
+          <table>
+            <tr>
+              <th class="w60">Sr. No.</th>
+              <th>Company Name</th>
+              <th>Distributor Detail</th>
+              <th class="w130">Brand Name</th>
+              <th class="w70  text-center">Quantity</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="table-container">
+        <div class="table-body">
+          <table>
+            <tr  *ngFor="let row of conDetail.parts; let i = index">
+              <td class="w60">{{i+1}}</td>
+              <td>{{conDetail.retailer_company_name | titlecase}} </td>
+              <td>{{conDetail.distributor_company_name | titlecase}} - {{conDetail.distributor_mobile}}</td>
+              <td class="w130">{{row.product_point_group | titlecase}}</td>
+              <!-- <td>{{row.item_name}}</td> -->
+              <td class="w70  text-center">{{row.qty}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row ml10 mr10">
+      <div class="col s12">
+        <div class="option-field">
+         <h2>Return Point</h2>
         </div>
       </div>
     </div>
@@ -274,13 +396,34 @@
           </div>
         </div>
       </div>
+
+      <!-- <div class="col s6">
+        <div class="option-field">
+          <div class="control-field">
+            <mat-form-field class="cs-input">
+              <input matInput placeholder="Add Point" name="add_point" [(ngModel)]="karigarform.add_point" #return_point="ngModel" >
+            </mat-form-field>  
+          </div>
+        </div>
+      </div> -->
+
+
     </div>
     <div class="row ml10 mr10">
       <div class="col s12">
         <div class="save un-save mt20" (click)="pointSubmit()">
-          <button mat-button >SAVE</button>
+          <button mat-button >Update</button>
         </div>
       </div>
     </div>
+
+    <!-- <div class="row ">
+      <div class="col s3  sv_pnts">
+        <div class="save un-save mt20" (click)="pointSubmit1()">
+          <button mat-button >Update</button>
+        </div>
+      </div>
+    </div> -->
+
   </div>
 </div>

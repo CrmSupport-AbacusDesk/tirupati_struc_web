@@ -66,7 +66,7 @@
             <tr>
               <th class="w50">&nbsp;</th>
               <th class="w150">Date</th>
-              <th class="w200">Retailer Name </th>
+              <th class="w200">Company Name </th>
               <th class="w150">Retailer Mobile No.</th>
               <th class="w200">Distributor Detail</th>
               <th class="w100 text-center">Total Item</th>
@@ -76,8 +76,10 @@
               <th class="w100 text-right">Transfer Points</th>
               <!-- <th class="w150">Reason</th> -->
               <th class="w100 text-right">Refunded Points</th>
-              <th class="w100 text-right">After Refunded Points</th>
-              <th class="w100 text-right">Return Points</th>
+              <th class="w100 text-center">Add Points</th>
+
+              <th class="w100 text-center">Balance Points</th>
+              <th class="w100 text-right">Update Points</th>
             </tr>
           </table>
         </div>
@@ -101,7 +103,7 @@
               </th>
               <th class="w200">
                 <div class="search-form">
-                  <input type="text" placeholder="Search..." [(ngModel)]="filter.retailer_name"
+                  <input type="text" placeholder="Search..." [(ngModel)]="filter.retailer_company_name"
                     (keyup.enter)="current_page = 1; contractorList('')">
                   <i class="material-icons">search</i>
                 </div>
@@ -155,6 +157,7 @@
               <th class="w100 text-center">&nbsp;</th>
               <th class="w100 text-center">&nbsp;</th>
               <th class="w100 text-center">&nbsp;</th>
+              <th class="w100 text-center">&nbsp;</th>
             </tr>
           </table>
         </div>
@@ -171,7 +174,7 @@
             <td class="w50">{{ ( (current_page - 1 ) * 20 ) + ( i+1 ) }}</td>
             <td class="w150">{{row.date_created | date: 'dd MMM yyyy'}} </td>
             <td class="w200"><a class="blue" routerLink="/dealer-detail/{{row.contractor_id}}/{{current_page}}"
-                routerLinkActive="active" (click)="set_filter(filter)">{{row.retailer_name}}</a></td>
+                routerLinkActive="active" (click)="set_filter(filter)">{{row.retailer_company_name}}</a></td>
             <td class="w150">{{row.retailer_mobile}}</td>
             <td class="w200">{{row.company_name}} {{row.distributor_mobile}}</td>
 
@@ -180,11 +183,16 @@
                 <ng-container *ngIf="row.image != ''">
                   <div class="">
                     <img [src]="uploadUrl+row.image" (click)="openDialog(uploadUrl + row.image)">
+
+
                   </div>
                 </ng-container>
-                <a class="blue"  *ngIf="row.total_items > 0" style="cursor: pointer;" (click)="modalOpen(1, data, row.id, row.type, row.points,'')">{{row.total_items}}</a>
+                <a class="blue" *ngIf="row.total_items > 0" style="cursor: pointer;"
+                  (click)="modalOpen(1, data, row.id, row.type, row.points,'')">{{row.total_items}}</a>
               </div>
             </td>
+
+
             <td class="w80 text-center">{{row.total_qty}}</td>
             <td class="w100 text-center">
               <div class="center" style="display: unset;" *ngIf="row.status != 'Approved'">
@@ -204,9 +212,25 @@
             <td class="w100 text-right"><strong>{{row.points}}</strong></td>
             <!-- <td class="w150">{{row.status_reason}}</td> -->
             <td class="w100 text-right"><strong class="Reject">{{row.return_points}}</strong></td>
-            <td class="w100 text-right"><strong>{{row.points - row.return_points}}</strong></td>
 
-            <td class="w100 text-right"><a class="blue" style="cursor: pointer;" (click)="modalOpen(3, data, row.id, row.type, row.points, row.contractor_id)">Return</a></td>
+
+            <td class="w100 text-center" style="color: green;"><strong>{{row.add_point}}</strong></td>
+
+            <td class="w100 text-center"><strong>{{row.points + row.add_point - row.return_points}}</strong></td>
+
+            <td class="w100 text-right">
+              <a class="blue" style="cursor: pointer;"
+                >
+                <div class="ic_prt">
+                  <button (click)="modalOpen(3, data, row.id, row.type, row.points, row.contractor_id)" mat-fab class="pls_btn" routerLinkActive="active">
+                    <mat-icon class="pl_ic">add</mat-icon>
+                  </button>
+                  <div class="no-img" (click)="modalOpen(4, data, row.id, row.type, row.points, row.contractor_id)">
+                    <img src="assets/minus_icon.png">
+                  </div>
+                </div>
+              </a>
+            </td>
           </tr>
         </table>
       </div>

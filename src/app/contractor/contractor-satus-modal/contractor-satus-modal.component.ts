@@ -39,7 +39,7 @@ export class ContractorSatusModalComponent implements OnInit {
   
   ngOnInit() {
     
-    if(this.dataValue == 1 || this.dataValue == 3){
+    if(this.dataValue == 1 || this.dataValue == 3 || this.dataValue == 4 ){
       this.contractorDetail();
     }
     
@@ -51,7 +51,8 @@ export class ContractorSatusModalComponent implements OnInit {
         console.log(r);
         this.conDetail = r.request_detail[0];
         this.karigarform.transfer_point = r.request_detail[0]['points'];
-        this.karigarform.return_point = r.request_detail[0]['return_points'];
+        this.karigarform.return_point = r.request_detail['return_points'];
+        this.karigarform.add_point = r.request_detail['add_point'];
       });
     }
     
@@ -141,7 +142,9 @@ export class ContractorSatusModalComponent implements OnInit {
         this.dialog.warning('The retrived point should be less than transfer point!');
         return;
         
-      } else {
+      }
+      
+      else {
         this.db.post_rqst({'request_id':this.id, 'contractor_id':this.contractor_id, 'return_points':this.karigarform.return_point}, 'app_master/return_contractor_points')
         .subscribe( r => {
           console.log(r);
@@ -154,6 +157,29 @@ export class ContractorSatusModalComponent implements OnInit {
       
     }
     
+
+
+    pointSubmit1(){
+      if (this.karigarform.transfer_point < this.karigarform.add_point )  {
+        this.dialog.warning('The retrived point should be less ');
+        return;
+        
+      }
+      
+      else {
+        this.db.post_rqst({'request_id':this.id, 'contractor_id':this.contractor_id, 'add_point':this.karigarform.add_point}, 'app_master/add_contractor_points')
+        .subscribe( r => {
+          console.log(r);
+          if(r['status'] == "UPDATED"){
+            this.dialog.success('Status Change Successfully');
+            this.dialogRef.closeAll();
+          }
+        });
+      }
+      
+    }
+
+
     
   }
   
