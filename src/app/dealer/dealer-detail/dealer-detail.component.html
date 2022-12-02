@@ -274,7 +274,7 @@
                                     <ul>
                                         <li>
                                             <p>Company Name</p>
-                                            <span>{{!getData.company_name?'N/A':getData.company_name |
+                                            <span>{{!getData.distributor_company_name?'N/A':getData.distributor_company_name |
                                                 titlecase }}</span>
                                         </li>
 
@@ -286,7 +286,7 @@
 
                                         <li>
                                             <p>Mobile No.</p>
-                                            <span>{{!getData.mobile_no ? 'N/A' : getData.mobile_no}}</span>
+                                            <span>{{!getData.distributor_mobile_no ? 'N/A' : getData.distributor_mobile_no}}</span>
                                         </li>
 
 
@@ -524,12 +524,19 @@
                                         <td class="w200">
 
                                             <div class="flex-group">
-                                                <ng-container *ngIf="val.image != ''">
+                                                <!-- <ng-container *ngIf="val.image != ''">
                                                     <div class="">
                                                         <img [src]="uploadUrl+val.image"
                                                             (click)="openDialog(uploadUrl + val.image)">
                                                     </div>
-                                                </ng-container>
+                                                </ng-container> -->
+                                                <ng-container *ngFor="let item of val.image; let i = index" >
+                                                    <div class="">
+                                                      <img [src]="uploadUrl+item.image" (click)="openDialog(uploadUrl + item.image)">
+                                  
+                                  
+                                                    </div>
+                                                  </ng-container>
                                                 <a class="blue" *ngIf="val.total_items > 0" style="cursor: pointer;"
                                                     (click)="modalOpen(1, data, val.id, val.type, val.points)">{{val.total_items}}</a>
                                             </div>

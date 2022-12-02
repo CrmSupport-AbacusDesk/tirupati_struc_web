@@ -39,7 +39,6 @@ export class DealerAddComponent implements OnInit {
           this.AssignSaleUser();
           this.AssignDistributor();
           this.get_karigar_type();
-          this.distributorList();
           this.karigarform.country_id = 99;
       });
   }
@@ -82,6 +81,8 @@ export class DealerAddComponent implements OnInit {
       .subscribe(d => {  
           this.loading_list = false;  
           this.states = d.states;
+this.distributorList(this.states);
+
       });
   }
 
@@ -96,13 +97,16 @@ export class DealerAddComponent implements OnInit {
       .subscribe(d => {  
           this.loading_list = false;
           this.districts = d.districts;  
+          this.distributorList(st_name)
       });
   }
 
 
-  distributorList(){   
+  distributorList(state){   
+    console.log(state);
+    
    
-    this.db.post_rqst({} ,'app_karigar/distributorList')
+    this.db.post_rqst({'state':state} ,'app_karigar/distributorList')
     .subscribe(d => {  
         
         this.distributorlist = d['karigars'];

@@ -180,9 +180,9 @@
 
             <td class="w100 text-center">
               <div class="flex-group">
-                <ng-container *ngIf="row.image != ''">
+                <ng-container *ngFor="let item of row.image; let i = index" >
                   <div class="">
-                    <img [src]="uploadUrl+row.image" (click)="openDialog(uploadUrl + row.image)">
+                    <img [src]="uploadUrl+item.image" (click)="openDialog(uploadUrl + item.image)">
 
 
                   </div>

@@ -16,6 +16,8 @@ export class ContractorListComponent implements OnInit {
   karigars: any = [];
   total_karigars = 0;
   data:any =[];
+  data1:any =[];
+
   
   last_page: number ;
   current_page = 1;
@@ -82,6 +84,8 @@ export class ContractorListComponent implements OnInit {
   }
   
 
+  image:any=[];
+  data3:any=[];
 
   contractorList(action:any){
     this.loading_list = true;
@@ -107,6 +111,8 @@ export class ContractorListComponent implements OnInit {
         console.log(r);
         console.log(r.request_list.data);
         this.data = r.request_list.data;
+        console.log(this.data);
+       
         this.current_page = r.request_list.current_page;
         this.last_page = r.request_list.last_page;
         
